@@ -1,0 +1,21 @@
+- name: Télécharger l'archive avec curl
+  ansible.builtin.get_url:
+    url: "{{ archive_url }}"
+    dest: "{{ runner_dir }}/{{ archive_name }}"
+    owner: "{{ runner_user }}"
+
+- name:  Validate the hash
+  shell: echo "ba46ba7ce3a4d7236b16fbe44419fb453bc08f866b24f04d549ec89f1722a29e  {{ runner_dir }}/{{ archive_name }}" | shasum -a 256 -c
+
+- name: Extract the installer
+  ansible.builtin.unarchive:
+    src: "{{ runner_dir }}/{{ archive_name }}"
+    dest: "{{ runner_dir }}"
+    remote_src: yes
+    owner: "{{ runner_user }}"
+
+- name: Configurer le runner
+  ansible.builtin.command: "{{ runner_dir }}/config.sh --unattended --url {{ repo_url }} --token {{ github_token }}"
+  become: yes
+  become_user: "{{ runner_user }}"
+  

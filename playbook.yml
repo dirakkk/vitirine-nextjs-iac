@@ -1,0 +1,18 @@
+- name: playbook thats installs a github runner
+  hosts: testnode
+  vars_files:
+    - vars/vars.yml
+    - vars/secrets.yml
+  tasks:
+    - name: creates required user and directories
+      ansible.builtin.include_tasks: tasks/1_runner-user-dir.yml
+
+    - name: installs and configures the github runner
+      ansible.builtin.include_tasks: tasks/2_install-conf-runner.yml
+
+    - name: installs nextJS
+      ansible.builtin.include_tasks: tasks/3_install-nextjs.yml
+
+    - name: ufw
+      ansible.builtin.include_tasks: tasks/4_ufw.yml
+
