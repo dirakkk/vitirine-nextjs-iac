@@ -1,0 +1,25 @@
+- name: Create a Linux user for the runner
+  ansible.builtin.user:
+    name: "{{ runner_user }}"
+    state: present
+    shell: /usr/bin/bash
+    create_home: yes
+
+- name: Ensure the group exists
+  group:
+    name: "{{ runner_group }}"
+    state: present
+
+- name: Add user to the group
+  user:
+    name: "{{ runner_user }}"
+    groups: "{{ runner_group }}"
+    append: yes
+
+- name: Create directory
+  ansible.builtin.file:
+    path: "{{ runner_dir }}"
+    state: directory
+    mode: "0700"
+    owner: "{{ runner_user }}"
+    group: "{{ runner_group }}"

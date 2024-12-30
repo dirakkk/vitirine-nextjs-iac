@@ -1,7 +1,13 @@
-[digital-ocean]
+[digitalocean]
 207.154.224.219
 
-[digital-ocean:vars]
+[testnode]
+139.59.156.9
+
+[digitalocean:vars]
 ansible_ssh_user=root
 ansible_ssh_password=
 #ansible_ssh_private_key_file=/home/yser364/.ssh/id_rsa
+
+[testnode:vars]
+ansible_ssh_user=root

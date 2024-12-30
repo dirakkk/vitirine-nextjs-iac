@@ -1,0 +1,26 @@
+- name: Ensure UFW is installed
+  ansible.builtin.package:
+    name: ufw
+    state: present
+
+- name: Enable UFW default rules (deny incoming, allow outgoing)
+  ansible.builtin.command: ufw default deny incoming
+- ansible.builtin.command: ufw default allow outgoing
+
+- name: Allow inbound SSH
+  ansible.builtin.ufw:
+    rule: allow
+    port: 22
+    proto: tcp
+
+- name: Allow outbound HTTPS
+  ansible.builtin.ufw:
+    rule: allow
+    port: 443
+    proto: tcp
+    direction: out
+
+- name: Enable UFW
+  ansible.builtin.ufw:
+    state: enabled
+    logging: on

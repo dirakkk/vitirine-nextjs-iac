@@ -1,0 +1,7 @@
+runner_user: ghrunner
+runner_group: ghrunner
+runner_dir: /opt/github-runner
+archive_name: actions-runner-linux-x64-2.321.0.tar.gz
+archive_url: https://github.com/actions/runner/releases/download/v2.321.0/{{ archive_name }}
+repo_url: https://github.com/avergnaud/vitrine-next
+project_vitrine_path: /home/ghrunner/projects/vitrine
