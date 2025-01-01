@@ -14,6 +14,13 @@
 
 ## ajout clé publique
 
+Attention (digitalocean droplet)
+
+Si connexion par mdp KO, connexion depui sla console web
+vi /etc/ssh/sshd_config
+PasswordAuthentication yes
+sudo service ssh restart
+
 ssh-copy-id -i path/to/key.pub username@remoteHost
 
 ou copier à la main dans authorized_keys
