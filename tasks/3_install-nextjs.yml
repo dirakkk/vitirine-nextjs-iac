@@ -6,9 +6,11 @@
     state: present
     update_cache: yes
 
-- name: Install Next.js globally
+- name: Install pm2, Next.js globally
   npm:
-    name: next
+    name: 
+      - next
+      - pm2
     global: yes
     state: present
 

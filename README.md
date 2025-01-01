@@ -12,6 +12,12 @@
 
 [https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#confirming-your-installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#confirming-your-installation)
 
+## ajout clé publique
+
+ssh-copy-id -i path/to/key.pub username@remoteHost
+
+ou copier à la main dans authorized_keys
+
 ## ping target VM
 
 (from control node)
