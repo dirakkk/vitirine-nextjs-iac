@@ -15,7 +15,7 @@
     owner: "{{ runner_user }}"
 
 - name: Configurer le runner
-  ansible.builtin.command: "{{ runner_dir }}/config.sh --unattended --url {{ repo_url }} --token {{ github_token }}"
+  ansible.builtin.command: "{{ runner_dir }}/config.sh --unattended --url {{ repo_url }} --token {{ runner_token }}"
   become: yes
   become_user: "{{ runner_user }}"
   

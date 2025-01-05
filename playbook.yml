@@ -1,9 +1,12 @@
 - name: playbook thats installs a github runner
-  hosts: testnode
+  hosts: digitalocean
   vars_files:
     - vars/vars.yml
     - vars/secrets.yml
   tasks:
+    - name: gets self hosted runner deployment token
+      ansible.builtin.include_tasks: tasks/0_getting_runner_token.yml
+
     - name: creates required user and directories
       ansible.builtin.include_tasks: tasks/1_runner-user-dir.yml
 
