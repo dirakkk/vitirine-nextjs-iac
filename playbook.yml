@@ -1,4 +1,4 @@
-- name: playbook thats installs a github runner
+- name: playbook thats installs a gihub runner and a nextjs server
   hosts: digitalocean
   vars_files:
     - vars/vars.yml
